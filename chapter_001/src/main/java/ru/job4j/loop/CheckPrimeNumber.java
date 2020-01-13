@@ -5,7 +5,7 @@ public class CheckPrimeNumber {
         int finish = (int)Math.ceil(Math.sqrt(number));
         boolean is_prime_number = true;
         for (int i=2; i<=finish; i++){
-            if (number % i == 0){
+            if (number % i == 0 && number != i){
                 is_prime_number = false;
                 break;
             }
