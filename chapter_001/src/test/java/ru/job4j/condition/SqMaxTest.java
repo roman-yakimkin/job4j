@@ -37,4 +37,10 @@ public class SqMaxTest {
         assertThat(result, is(10));
     }
 
+    @Test
+    public void whenThirdMax2(){
+        int result = SqMax.max(10,2,33,5);
+        assertThat(result, is(33));
+    }
+
 }
