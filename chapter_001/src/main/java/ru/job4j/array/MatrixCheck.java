@@ -4,7 +4,7 @@ package ru.job4j.array;
  * Класс, проверяющий моностроку и моностолбец в таблице
  * @author Roman Yakimkin (r.yakimkin@yandex.ru)
  * @since 15.01.2020
- * @version 1.1
+ * @version 1.2
  */
 public class MatrixCheck {
 
@@ -36,5 +36,18 @@ public class MatrixCheck {
             }
         }
         return true;
+    }
+
+    /**
+     * Возвращает диагональные элементы матрицы в виде одномерного массива
+     * @param board - исходная символьная матрица
+     * @return result - одномерный массив, состоящий из диагональных элементов
+     */
+    public static char[] extractDiagonal(char[][] board){
+        char[] result = new char[board.length];
+        for (int i=0; i<board.length; i++){
+            result[i] = board[i][i];
+        }
+        return result;
     }
 }
