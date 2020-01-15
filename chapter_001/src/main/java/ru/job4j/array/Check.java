@@ -9,7 +9,7 @@ package ru.job4j.array;
 public class Check {
 
     /**
-     * Проверка массива на одинаковость всех элементов
+     * Проверка массива на одинаковость всех элементов с помощью булевой алгебры
      * @param data - входной массив
      * @return true, если все элементы одинаковые
      */
@@ -19,6 +19,20 @@ public class Check {
             and_by_all = and_by_all && data[i];
             or_by_all = or_by_all || data[i];
             if (!and_by_all && or_by_all){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Проверка массива на одинаковость классическим способом
+     * @param data - входной массив
+     * @return true, если все элементы одинаковые
+     */
+    public boolean monoClassic(boolean[] data){
+        for (int i=1; i < data.length; i++){
+            if (data[i] != data[0]){
                 return false;
             }
         }

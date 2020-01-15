@@ -30,4 +30,36 @@ public class CheckTest {
         boolean result = check.mono(input);
         assertThat(result, is(true));
     }
+
+    @Test
+    public void whenDataMonoByTrueThenTrueByClassic() {
+        Check check = new Check();
+        boolean[] input = new boolean[] {true, true, true};
+        boolean result = check.monoClassic(input);
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void whenDataNotMonoByTrueThenFalseByClassic() {
+        Check check = new Check();
+        boolean[] input = new boolean[] {true, false, true};
+        boolean result = check.monoClassic(input);
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenDataMonoByFalseThenTrueByClassic() {
+        Check check = new Check();
+        boolean[] input = new boolean[] {false, false, false};
+        boolean result = check.monoClassic(input);
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void whenDataMonoByOneElementThenTrueByClassic() {
+        Check check = new Check();
+        boolean[] input = new boolean[] {false};
+        boolean result = check.monoClassic(input);
+        assertThat(result, is(true));
+    }
 }
