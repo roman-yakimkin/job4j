@@ -1,10 +1,10 @@
 package ru.job4j.array;
 
 /**
- * Класс, проверяющий моностроку и моностолбец в таблице
+ * Класс для экспериментов с символьной матрицей
  * @author Roman Yakimkin (r.yakimkin@yandex.ru)
  * @since 15.01.2020
- * @version 1.2
+ * @version 1.3
  */
 public class MatrixCheck {
 
@@ -50,4 +50,24 @@ public class MatrixCheck {
         }
         return result;
     }
+
+    /**
+     * Проверяет наличие выигрышной ситуации в матрице размером 5*5 элементов
+     * @param board - символьная матрица
+     * @return истина, если найдена выигрышная ситуация
+     */
+    public static boolean isWin(char[][] board){
+        for (int i=0; i<board.length; i++){
+            if (monoHorizontal(board, i)){
+                return true;
+            }
+            if (monoVertical(board, i)){
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+
 }
