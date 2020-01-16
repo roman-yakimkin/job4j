@@ -8,19 +8,19 @@ import static org.junit.Assert.assertThat;
 public class MaxTest {
 
     @Test
-    public void whenMax1To2Then2(){
+    public void whenMax1To2Then2() {
         int result = Max.max(1, 2);
         assertThat(result, is(2));
     }
 
     @Test
-    public void whenMax3To2Then3(){
+    public void whenMax3To2Then3() {
         int result = Max.max(3, 2);
         assertThat(result, is(3));
     }
 
     @Test
-    public void whenEqualsThenAny(){
+    public void whenEqualsThenAny() {
         int result = Max.max(4, 4);
         assertThat(result, is(4));
     }

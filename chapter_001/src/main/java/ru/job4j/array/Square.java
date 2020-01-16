@@ -13,10 +13,10 @@ public class Square {
      * @param bound количество элементов
      * @return result массив квадратов элементов
      */
-    public int[] calculate(int bound){
+    public int[] calculate(int bound) {
         int[] result = new int[bound];
-        for(int i=0; i<bound; i++){
-            result[i] = (i+1)*(i+1);
+        for (int i = 0; i < bound; i++) {
+            result[i] = (i + 1) * (i + 1);
         }
         return result;
     }

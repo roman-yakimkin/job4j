@@ -13,14 +13,14 @@ public class Defragment {
      * @param array - исходный массив слов
      * @return array - возвращает дефрагментированный массив
      */
-    public static String[] compress(String[] array){
-        for (int index = 0; index < array.length; index++ ){
+    public static String[] compress(String[] array) {
+        for (int index = 0; index < array.length; index++) {
             String cell = array[index];
-            if (cell == null){
-                for (int j = index+1; j < array.length; j++ ){
-                    array[j-1] = array[j];
+            if (cell == null) {
+                for (int j = index + 1; j < array.length; j++) {
+                    array[j - 1] = array[j];
                 }
-                array[array.length-1] = null;
+                array[array.length - 1] = null;
             }
         }
         return array;

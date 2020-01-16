@@ -14,12 +14,12 @@ public class ArrayChar {
      * @param pref - последовательность, с которой начинается или не начинается слово
      * @return истина, если слово word начинается c последовательности pref
      */
-    public static boolean startsWith(char[] word, char[] pref){
-        if (word.length < pref.length){
+    public static boolean startsWith(char[] word, char[] pref) {
+        if (word.length < pref.length) {
             return false;
         }
-        for (int i = 0; i < pref.length; i++){
-            if (word[i] != pref[i]){
+        for (int i = 0; i < pref.length; i++) {
+            if (word[i] != pref[i]) {
                 return false;
             }
         }

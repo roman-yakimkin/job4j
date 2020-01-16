@@ -64,7 +64,7 @@ public class MatrixCheckTest {
     }
 
     @Test
-    public void diagonalX_X() {
+    public void diagonalXSpaceX() {
         char[][] input = {
                 {'X', ' ', ' '},
                 {' ', ' ', ' '},

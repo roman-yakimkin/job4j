@@ -14,10 +14,10 @@ public class FindLoop {
      * @param el - искомый элемент
      * @return result - возвращает индекс элемента или -1, если не найдено
      */
-    public int indexOf(int[] data, int el){
+    public int indexOf(int[] data, int el) {
         int result = -1;
-        for (int index=0; index<data.length; index++){
-            if (data[index] == el){
+        for (int index = 0; index < data.length; index++) {
+            if (data[index] == el) {
                 result = index;
                 break;
             }
@@ -33,10 +33,10 @@ public class FindLoop {
      * @param finish - индекс, которым оканчивается поиск
      * @return result - возвращает индекс элемента или -1, если не найдено
      */
-    public int indexOf(int[] data, int el, int start, int finish){
+    public int indexOf(int[] data, int el, int start, int finish) {
         int result = -1;
-        for (int index=start; index<=finish; index++){
-            if (data[index] == el){
+        for (int index = start; index <= finish; index++) {
+            if (data[index] == el) {
                 result = index;
                 break;
             }

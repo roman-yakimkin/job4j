@@ -14,12 +14,12 @@ public class EndsWith {
      * @param post - последовательность, которой должно оканчиваться слово
      * @return - истина, если слово word оканчивается последовательностью post
      */
-    public static boolean endsWith(char[] word, char[] post){
-        if (word.length < post.length){
+    public static boolean endsWith(char[] word, char[] post) {
+        if (word.length < post.length) {
             return false;
         }
-        for (int i = 0; i < post.length; i++){
-            if (word[word.length-i-1] != post[post.length-i-1]){
+        for (int i = 0; i < post.length; i++) {
+            if (word[word.length - i - 1] != post[post.length - i - 1]) {
                 return false;
             }
         }

@@ -15,10 +15,10 @@ public class MinDiapason {
      * @param finish - конечный индекс диапазона
      * @return min - возвращает минимальный элемент в заданном диапазоне
      */
-    public static int findMin(int[] data, int start, int finish){
+    public static int findMin(int[] data, int start, int finish) {
         int min = data[start];
-        for (int i=start; i<=finish; i++){
-            if (data[i] < min){
+        for (int i = start; i <= finish; i++) {
+            if (data[i] < min) {
                 min = data[i];
             }
         }

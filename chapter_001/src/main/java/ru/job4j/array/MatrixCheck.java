@@ -14,9 +14,9 @@ public class MatrixCheck {
      * @param row - индекс строки
      * @return истина, если все элементы заполнены символами 'X'
      */
-    public static boolean monoHorizontal(char[][] board, int row){
-        for(int col=0; col<board[row].length; col++){
-            if (board[row][col] != 'X'){
+    public static boolean monoHorizontal(char[][] board, int row) {
+        for (int col = 0; col < board[row].length; col++) {
+            if (board[row][col] != 'X') {
                 return false;
             }
         }
@@ -29,9 +29,9 @@ public class MatrixCheck {
      * @param col - индекс столбца
      * @return истина, если все элементы заполнены символами 'X'
      */
-    public static boolean monoVertical(char[][] board, int col){
-        for(int row=0; row<board.length; row++){
-            if (board[row][col] != 'X'){
+    public static boolean monoVertical(char[][] board, int col) {
+        for (int row = 0; row < board.length; row++) {
+            if (board[row][col] != 'X') {
                 return false;
             }
         }
@@ -43,9 +43,9 @@ public class MatrixCheck {
      * @param board - исходная символьная матрица
      * @return result - одномерный массив, состоящий из диагональных элементов
      */
-    public static char[] extractDiagonal(char[][] board){
+    public static char[] extractDiagonal(char[][] board) {
         char[] result = new char[board.length];
-        for (int i=0; i<board.length; i++){
+        for (int i = 0; i < board.length; i++) {
             result[i] = board[i][i];
         }
         return result;
@@ -56,14 +56,12 @@ public class MatrixCheck {
      * @param board - символьная матрица
      * @return истина, если найдена выигрышная ситуация
      */
-    public static boolean isWin(char[][] board){
-        for (int i=0; i<board.length; i++){
+    public static boolean isWin(char[][] board) {
+        for (int i = 0; i < board.length; i++) {
             if (monoHorizontal(board, i) || monoVertical(board, i)) {
                 return true;
             }
         }
         return false;
     }
-
-
 }

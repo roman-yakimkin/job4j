@@ -13,11 +13,11 @@ public class SortSelected {
      * @param data - исходный массив
      * @return отсотрированный по возрастанию массив
      */
-    public static int[] sort(int[] data){
+    public static int[] sort(int[] data) {
         FindLoop findLoop = new FindLoop();
-        for (int i=0; i < data.length; i++){
-            int minValue = MinDiapason.findMin(data, i, data.length-1);
-            int minIndex = findLoop.indexOf(data, minValue, i, data.length-1);
+        for (int i = 0; i < data.length; i++) {
+            int minValue = MinDiapason.findMin(data, i, data.length - 1);
+            int minIndex = findLoop.indexOf(data, minValue, i, data.length - 1);
             int tmp = minValue;
             data[minIndex] = data[i];
             data[i] = tmp;

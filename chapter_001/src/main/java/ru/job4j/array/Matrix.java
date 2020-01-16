@@ -13,12 +13,12 @@ public class Matrix {
      * @param size - размер матрицы
      * @return table - матрица, содержащая произведения индексов строк и столбцов
      */
-    public int[][] multiple(int size){
+    public int[][] multiple(int size) {
         int[][] table = new int[size][size];
 
-        for (int col=0; col<size; col++){
-            for (int row = 0; row<size; row++){
-                table[col][row] = (col+1) * (row+1);
+        for (int col = 0; col < size; col++) {
+            for (int row = 0; row < size; row++) {
+                table[col][row] = (col + 1) * (row + 1);
             }
         }
         return table;

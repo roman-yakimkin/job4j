@@ -13,10 +13,10 @@ public class Min {
      * @param array - исходный массив
      * @return min - возвращает минимальный элемент в массиве
      */
-    public static int findMin(int[] array){
+    public static int findMin(int[] array) {
         int min = array[0];
-        for (int i = 1; i < array.length; i++){
-            if (array[i] < min){
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < min) {
                 min = array[i];
             }
         }

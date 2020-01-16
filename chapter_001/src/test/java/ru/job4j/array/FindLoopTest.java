@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 public class FindLoopTest {
 
     @Test
-    public void whenArrayHas5Then0(){
+    public void whenArrayHas5Then0() {
         FindLoop findLoop = new FindLoop();
         int[] input = new int[] {5, 10, 3};
         int value = 5;
@@ -19,7 +19,7 @@ public class FindLoopTest {
     }
 
     @Test
-    public void whenArrayHas15ThenMinus1(){
+    public void whenArrayHas15ThenMinus1() {
         FindLoop findLoop = new FindLoop();
         int[] input = new int[] {3, 12, 1, 14, 20, 6};
         int value = 15;
@@ -29,7 +29,7 @@ public class FindLoopTest {
     }
 
     @Test
-    public void whenArrayHas20Then4(){
+    public void whenArrayHas20Then4() {
         FindLoop findLoop = new FindLoop();
         int[] input = new int[] {3, 12, 1, 14, 20, 6};
         int value = 20;

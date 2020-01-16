@@ -8,39 +8,38 @@ import static org.junit.Assert.assertThat;
 public class SqMaxTest {
 
     @Test
-    public void whenFirstMax(){
-        int result = SqMax.max(10,2,3,5);
+    public void whenFirstMax() {
+        int result = SqMax.max(10, 2, 3, 5);
         assertThat(result, is(10));
     }
 
     @Test
-    public void whenSecondMax(){
-        int result = SqMax.max(1,22,3,5);
+    public void whenSecondMax() {
+        int result = SqMax.max(1, 22, 3, 5);
         assertThat(result, is(22));
     }
 
     @Test
-    public void whenThirdMax(){
-        int result = SqMax.max(2,2,43,5);
+    public void whenThirdMax() {
+        int result = SqMax.max(2, 2, 43, 5);
         assertThat(result, is(43));
     }
 
     @Test
-    public void whenFourthMax(){
-        int result = SqMax.max(1,2,3,15);
+    public void whenFourthMax() {
+        int result = SqMax.max(1, 2, 3, 15);
         assertThat(result, is(15));
     }
 
     @Test
-    public void whenAllEqual(){
-        int result = SqMax.max(10,10,10,10);
+    public void whenAllEqual() {
+        int result = SqMax.max(10, 10, 10, 10);
         assertThat(result, is(10));
     }
 
     @Test
-    public void whenThirdMax2(){
-        int result = SqMax.max(10,2,33,5);
+    public void whenThirdMax2() {
+        int result = SqMax.max(10, 2, 33, 5);
         assertThat(result, is(33));
     }
-
 }

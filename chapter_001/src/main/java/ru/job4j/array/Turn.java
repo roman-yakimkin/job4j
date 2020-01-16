@@ -13,14 +13,14 @@ public class Turn {
      * @param array - входной массив
      * @return array - перевернутый массив
      */
-    public int[] back(int[] array){
+    public int[] back(int[] array) {
 
-        int i_finish = array.length - 1;
-        for (int i_start = 0; i_start < i_finish; i_start++){
-            int tmp = array[i_start];
-            array[i_start] = array[i_finish];
-            array[i_finish] = tmp;
-            i_finish--;
+        int iFinish = array.length - 1;
+        for (int iStart = 0; iStart < iFinish; iStart++) {
+            int tmp = array[iStart];
+            array[iStart] = array[iFinish];
+            array[iFinish] = tmp;
+            iFinish--;
         }
         return array;
     }

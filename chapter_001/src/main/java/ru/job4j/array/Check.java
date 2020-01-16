@@ -13,12 +13,12 @@ public class Check {
      * @param data - входной массив
      * @return true, если все элементы одинаковые
      */
-    public boolean mono(boolean[] data){
-        boolean and_by_all = true, or_by_all = false;
-        for (int i = 0; i < data.length; i++){
-            and_by_all = and_by_all && data[i];
-            or_by_all = or_by_all || data[i];
-            if (!and_by_all && or_by_all){
+    public boolean mono(boolean[] data) {
+        boolean andByAll = true, orByAll = false;
+        for (int i = 0; i < data.length; i++) {
+            andByAll = andByAll && data[i];
+            orByAll = orByAll || data[i];
+            if (!orByAll && orByAll) {
                 return false;
             }
         }
@@ -30,9 +30,9 @@ public class Check {
      * @param data - входной массив
      * @return true, если все элементы одинаковые
      */
-    public boolean monoClassic(boolean[] data){
-        for (int i=1; i < data.length; i++){
-            if (data[i] != data[0]){
+    public boolean monoClassic(boolean[] data) {
+        for (int i = 1; i < data.length; i++) {
+            if (data[i] != data[0]) {
                 return false;
             }
         }

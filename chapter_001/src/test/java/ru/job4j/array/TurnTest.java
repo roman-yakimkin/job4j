@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 public class TurnTest {
 
     @Test
-    public void whenOddCountOfElements(){
+    public void whenOddCountOfElements() {
         Turn turn = new Turn();
         int[] input = {1, 2, 3, 4, 5};
         int[] result = turn.back(input);
@@ -17,7 +17,7 @@ public class TurnTest {
     }
 
     @Test
-    public void whenNotOddCountOfElements(){
+    public void whenNotOddCountOfElements() {
         Turn turn = new Turn();
         int[] input = {1, 2, 3, 4, 5, 6};
         int[] result = turn.back(input);
@@ -26,7 +26,7 @@ public class TurnTest {
     }
 
     @Test
-    public void whenOneElement(){
+    public void whenOneElement() {
         Turn turn = new Turn();
         int[] input = {2};
         int[] result = turn.back(input);
