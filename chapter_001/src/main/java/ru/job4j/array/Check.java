@@ -18,7 +18,7 @@ public class Check {
         for (int i = 0; i < data.length; i++) {
             andByAll = andByAll && data[i];
             orByAll = orByAll || data[i];
-            if (!orByAll && orByAll) {
+            if (!andByAll && orByAll) {
                 return false;
             }
         }
