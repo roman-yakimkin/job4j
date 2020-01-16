@@ -35,8 +35,6 @@ public class FindLoop {
      */
     public int indexOf(int[] data, int el, int start, int finish){
         int result = -1;
-        start = (start < 0) ? 0 : start;
-        finish = (finish > data.length-1) ? data.length-1 : finish;
         for (int index=start; index<=finish; index++){
             if (data[index] == el){
                 result = index;
