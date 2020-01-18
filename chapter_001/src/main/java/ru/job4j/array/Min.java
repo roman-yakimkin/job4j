@@ -22,4 +22,19 @@ public class Min {
         }
         return min;
     }
+
+    /**
+     * Поиск максимального элемента в массиве
+     * @param array - исходный массив
+     * @return max - возвращает минимальный элемент в массиве
+     */
+    public static int findMax(int[] array) {
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
 }
