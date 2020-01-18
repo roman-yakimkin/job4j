@@ -15,7 +15,7 @@ public class Merge {
      * @return result - объединение двух массивов в виде отсортированного массива
      */
     public int[] merge(int[] left, int[] right) {
-        int[] result = new int[left.length + right.length];
+        int[] result = new int[left.length + right.length + 1];
         int indexLeft = 0;
         int indexRight = 0;
         for (int i = 0; i < result.length; i++) {
