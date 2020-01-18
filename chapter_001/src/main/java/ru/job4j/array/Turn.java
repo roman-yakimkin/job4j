@@ -14,7 +14,6 @@ public class Turn {
      * @return array - перевернутый массив
      */
     public int[] back(int[] array) {
-
         int iFinish = array.length - 1;
         for (int iStart = 0; iStart < iFinish; iStart++) {
             int tmp = array[iStart];

@@ -20,25 +20,21 @@ public class Converter {
     public static void main(String[] args) {
         int in, expected, out;
         boolean passed;
-
         in = 140;
         expected = 2;
         out = rubleToEuro(in);
         passed = (expected == out);
         System.out.println("140 rubles are 2. Test result : " + passed);
-
         in = 180;
         expected = 3;
         out = rubleToDollar(in);
         passed = (expected == out);
         System.out.println("180 rubles are 3. Test result : " + passed);
-
         in = 5;
         expected = 350;
         out = euroToRuble(in);
         passed = (expected == out);
         System.out.println("5 euros are 350. Test result : " + passed);
-
         in = 4;
         expected = 240;
         out = dollarToRuble(in);

@@ -14,11 +14,11 @@ public class Check {
      * @return true, если все элементы одинаковые
      */
     public boolean mono(boolean[] data) {
-        boolean andByAll = true, orByAll = false;
+        boolean ands = true, ors = false;
         for (int i = 0; i < data.length; i++) {
-            andByAll = andByAll && data[i];
-            orByAll = orByAll || data[i];
-            if (!andByAll && orByAll) {
+            ands = ands && data[i];
+            ors = ors || data[i];
+            if (!ands && ors) {
                 return false;
             }
         }

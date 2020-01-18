@@ -4,7 +4,6 @@ public class SqArea {
     public static double square(double p, double k) {
         double rectangleWidth = p / (2 * (1 + k));
         double rectangleHeight = rectangleWidth * k;
-
         return rectangleWidth * rectangleHeight;
     }
 
