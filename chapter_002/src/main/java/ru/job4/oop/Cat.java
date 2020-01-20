@@ -9,6 +9,39 @@ package ru.job4.oop;
 public class Cat {
 
     /**
+     * Кличка кошки
+     */
+    private String name;
+
+    /**
+     * Еда, которая в распоряжении конкретной кошки
+     */
+    private String food;
+
+    /**
+     * Дать кошке кличку
+     * @param nick - кличка для кошки
+     */
+    public void giveNick(String nick){
+        this.name = nick;
+    }
+
+    /**
+     * Показать еду данной кошки
+     */
+    public void show(){
+        System.out.println(this.name + " eats " + this.food);
+    }
+
+    /**
+     * Объект потребляет еду
+     * @param meat - потребляемаая еда
+     */
+    public void eat(String meat){
+        this.food = meat;
+    }
+
+    /**
      * Произнесение звука животным
      * @return voice - произносимый звук
      */
@@ -22,10 +55,15 @@ public class Cat {
      * @param args - аргументы для запуска
      */
     public static void main(String[] args) {
-        Cat peppy = new Cat();
-        Cat sparky = new Cat();
-
-        String say = peppy.sound();
-        System.out.println("Peppy says: " + say);
+        System.out.println("There are Gav's food");
+        Cat gav = new Cat();
+        gav.giveNick("Gav");
+        gav.eat("cutlet");
+        gav.show();
+        System.out.println("There are Black's food");
+        Cat black = new Cat();
+        black.giveNick("Black");
+        black.eat("fish");
+        black.show();
     }
 }
