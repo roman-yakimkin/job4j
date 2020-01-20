@@ -22,14 +22,14 @@ public class Cat {
      * Дать кошке кличку
      * @param nick - кличка для кошки
      */
-    public void giveNick(String nick){
+    public void giveNick(String nick) {
         this.name = nick;
     }
 
     /**
      * Показать еду данной кошки
      */
-    public void show(){
+    public void show() {
         System.out.println(this.name + " eats " + this.food);
     }
 
@@ -37,7 +37,7 @@ public class Cat {
      * Объект потребляет еду
      * @param meat - потребляемаая еда
      */
-    public void eat(String meat){
+    public void eat(String meat) {
         this.food = meat;
     }
 
