@@ -1,12 +1,50 @@
 package ru.job4j.condition;
 
+/**
+ * Класс, представляющий точку
+ * @author Roman Yakimkin (r.yakimkin@yandex.ru)
+ * @since 15.01.2020
+ * @version 2.0
+ */
 public class Point {
-    public static double distance(int x1, int y1, int x2, int y2) {
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+
+    /**
+     * Координата х точки
+     */
+    private int x;
+
+    /**
+     * Координата y точки
+     */
+    private int y;
+
+    /**
+     * Конструктор точки
+     * @param first - координата X
+     * @param second - координата Y
+     */
+    public Point(int first, int second) {
+        this.x = first;
+        this.y = second;
     }
 
+    /**
+     * Вычислить расстояние между двумя точками
+     * @param that - вторая точка
+     * @return - расстояние меду двумя точками
+     */
+    public double distance(Point that) {
+        return Math.sqrt(Math.pow(this.x - that.x, 2) + Math.pow(this.y - that.y, 2));
+    }
+
+    /**
+     * Статическая функция для запуска класса
+     * @param args - аргументы для запуска
+     */
     public static void main(String[] args) {
-        double result = distance(0, 0, 2, 0);
-        System.out.println("result (0, 0) to (2, 0) is " + result);
+        Point a = new Point(0, 0);
+        Point b = new Point(0, 2);
+        double dist = a.distance(b);
+        System.out.println(dist);
     }
 }
