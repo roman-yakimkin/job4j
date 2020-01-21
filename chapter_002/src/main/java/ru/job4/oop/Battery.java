@@ -22,6 +22,14 @@ public class Battery {
     }
 
     /**
+     * Геттер для поля load
+     * @return значение поля load
+     */
+    public int getLoad() {
+        return this.load;
+    }
+
+    /**
      * Передать заряд другой батарее
      * @param another
      */
