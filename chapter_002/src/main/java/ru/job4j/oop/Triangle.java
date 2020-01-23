@@ -53,11 +53,15 @@ public class Triangle {
      * @return значение площади треугольника
      */
     public double area() {
+        double area = -1;
         double a = first.distance(second);
         double b = first.distance(third);
         double c = second.distance(third);
         double semiPerimeter = perimeter(a, b, c) / 2;
-        double area = Math.sqrt(semiPerimeter * (semiPerimeter - a) * (semiPerimeter - b) * (semiPerimeter - c));
+
+        if (exists(a, b, c)) {
+            area = Math.sqrt(semiPerimeter * (semiPerimeter - a) * (semiPerimeter - b) * (semiPerimeter - c));
+        }
 
         return area;
     }
