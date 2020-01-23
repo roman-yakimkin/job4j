@@ -1,4 +1,4 @@
-package ru.job4.oop;
+package ru.job4j.oop;
 
 /**
  * Учебный класс, представляющий кошку

@@ -1,12 +1,19 @@
-package ru.job4.oop;
+package ru.job4j.oop;
 
 /**
- * Класс, представляющий зайца в сказке "Колобок"
+ * Класс, представляющий волка
  * @author Roman Yakimkin (r.yakimkin@yandex.ru)
  * @since 20.01.2020
  * @version 1.0
  */
-public class Hare {
+public class Wolf {
+
+    /**
+     * Съесть девочку
+     * @param girl - съедаемая девочка
+     */
+    public void eat(Girl girl) {
+    }
 
     /**
      * Попытка съесть колобка

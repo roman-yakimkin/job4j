@@ -1,4 +1,4 @@
-package ru.job4.oop;
+package ru.job4j.oop;
 
 /**
  *  Тестовый класс - переводчик
