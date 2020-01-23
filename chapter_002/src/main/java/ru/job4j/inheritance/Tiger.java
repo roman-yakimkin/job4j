@@ -17,10 +17,20 @@ public class Tiger extends Predator {
     }
 
     /**
+     * Конструктор с именем
+     * @param name - имя тигра
+     */
+    public Tiger(String name) {
+        super(name);
+        System.out.println("Tiger " + this.name + " has been created");
+    }
+
+    /**
      * Статическая функция для запуска класса
      * @param args - аргументы для запуска
      */
     public static void main(String[] args) {
-        Tiger tiger = new Tiger();
+        Tiger tiger = new Tiger("Giant");
+
     }
 }
