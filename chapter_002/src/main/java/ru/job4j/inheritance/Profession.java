@@ -10,52 +10,52 @@ public class Profession {
     /**
      * Имя
      */
-    protected string name;
+    private String name;
 
     /**
      * Фамилия
      */
-    protected string surname;
+    private String surname;
 
     /**
      * Образование
      */
-    protected string education;
+    private String education;
 
     /**
      * День рождения
      */
-    protected string birthday;
+    private String birthday;
 
-    public string getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(string name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public string getSurname() {
+    public String getSurname() {
         return surname;
     }
 
-    public void setSurname(string surname) {
+    public void setSurname(String surname) {
         this.surname = surname;
     }
 
-    public string getEducation() {
+    public String getEducation() {
         return education;
     }
 
-    public void setEducation(string education) {
+    public void setEducation(String education) {
         this.education = education;
     }
 
-    public string getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(string birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 }

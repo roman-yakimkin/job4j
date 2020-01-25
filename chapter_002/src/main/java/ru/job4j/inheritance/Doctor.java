@@ -14,5 +14,6 @@ public class Doctor extends Profession {
      * @return - диагноз
      */
     Diagnose diagnostics(Patient patient) {
+        return null;
     }
 }

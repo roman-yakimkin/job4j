@@ -11,7 +11,7 @@ public class Engineer extends Profession {
     /**
      * Технологии, кототыми владеет инженер
      */
-    Technology[] technologies;
+    private Technology[] technologies;
 
     /**
      * Изучить технологию
@@ -27,6 +27,6 @@ public class Engineer extends Profession {
      * @return - истина, если владеет
      */
     boolean isOwnTechnology(Technology technology) {
-
+        return false;
     }
 }

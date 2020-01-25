@@ -14,5 +14,6 @@ public class Surgeon extends Doctor {
      * @return - удачность операции
      */
     boolean surgery(Patient patient) {
+        return false;
     }
 }

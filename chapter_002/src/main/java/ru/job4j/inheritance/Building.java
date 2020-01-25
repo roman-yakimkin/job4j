@@ -11,17 +11,17 @@ public class Building {
     /**
      * Название
      */
-    protected String name;
+    private String name;
 
     /**
      * Адрес
      */
-    protected String address;
+    private String address;
 
     /**
      * Описание
      */
-    protected Strind description;
+    private String description;
 
     public String getName() {
         return name;
@@ -39,11 +39,11 @@ public class Building {
         this.address = address;
     }
 
-    public Strind getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Strind description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

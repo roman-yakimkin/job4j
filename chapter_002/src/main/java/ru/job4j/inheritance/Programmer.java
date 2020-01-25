@@ -13,7 +13,7 @@ public class Programmer extends Engineer {
     /**
      * Ссылка на GitHub
      */
-    protected String githubLink;
+    private String githubLink;
 
     public String getGithubLink() {
         return githubLink;
@@ -30,6 +30,6 @@ public class Programmer extends Engineer {
      * @return истина, если задача успешно реализована
      */
     boolean executeJob(ProgramJob job, Date term) {
-
+        return false;
     }
 }
