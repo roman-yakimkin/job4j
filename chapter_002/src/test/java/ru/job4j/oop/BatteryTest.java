@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 public class BatteryTest {
 
     @Test
-    public void OneIsFiveAndAnotherIsTen() {
+    public void oneIs5AndAnotherIs10() {
         Battery one = new Battery(5);
         Battery another = new Battery(10);
         one.exchange(another);
