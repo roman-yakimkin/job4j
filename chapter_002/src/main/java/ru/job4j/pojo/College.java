@@ -10,14 +10,10 @@ import java.util.Date;
  */
 public class College {
 
-    /**
-     * Статическая функция для запуска класса
-     * @param args - аргументы для запуска
-     */
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         Student student = new Student();
         student.setFullName("Sergey Ivanovich Petrov");
-        student.setEnrollmentDate(new Date(2010,8,1));
+        student.setEnrollmentDate(new Date(2010, 8, 1));
         student.setGroup("A-100");
         System.out.println("Student " + student.getFullName() + " was enrolled into the " + student.getGroup() +  " group on " + student.getEnrollmentDate());
     }
