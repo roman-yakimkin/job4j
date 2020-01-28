@@ -3,7 +3,6 @@ package ru.job4j.tracker;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
@@ -19,34 +18,55 @@ public class TrackerTest {
     }
 
     @Test
+    public void testFindAll() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("Item1");
+        tracker.add(item1);
+        Item item2 = new Item("Item2");
+        tracker.add(item2);
+        Item item3 = new Item("Item3");
+        tracker.add(item3);
+        Item[] expected = {new Item(item1), new Item(item2), new Item(item3)};
+        Item[] result = tracker.findAll();
+        assertArrayEquals(result, expected);
+    }
+
+    @Test
     public void testFindById() {
         Tracker tracker = new Tracker();
-        Item item5 = null;
-        for (int i = 0; i < 20; i++) {
-            Item item = new Item("Item" + String.valueOf(i));
-            tracker.add(item);
-            if (i == 5) {
-                item5 = item;
-            }
-        }
-        Item result = tracker.findById(item5.getId());
-        assertThat(result.getName(), is(item5.getName()));
+        Item item1 = new Item("Item1");
+        tracker.add(item1);
+        Item item2 = new Item("Item2");
+        tracker.add(item2);
+        Item item3 = new Item("Item3");
+        tracker.add(item3);
+        Item itemExpected = new Item(item3);
+        Item item4 = new Item("Item4");
+        tracker.add(item4);
+        Item item5 = new Item("Item5");
+        tracker.add(item5);
+
+        Item result = tracker.findById(itemExpected.getId());
+        assertThat(result.getName(), is(itemExpected.getName()));
     }
 
     @Test
     public void testFindByNameItem3() {
         Tracker tracker = new Tracker();
-        String[] itemNames = {"Item1", "Item2", "Item3", "Item3", "Item3", "Item2"};
-        Item[] expected = new Item[3];
-        int expectedIndex = 0;
-        for (String itemName : itemNames) {
-            Item item = new Item(itemName);
-            tracker.add(item);
-            if (itemName.equals("Item3")) {
-                expected[expectedIndex++] = new Item(item);
-            }
-        }
+        Item item1 = new Item("Item1");
+        tracker.add(item1);
+        Item item2 = new Item("Item2");
+        tracker.add(item2);
+        Item item3 = new Item("Item3");
+        tracker.add(item3);
+        Item item4 = new Item("Item3");
+        tracker.add(item4);
+        Item item5 = new Item("Item2");
+        tracker.add(item5);
+
+        Item[] expected = {new Item(item3), new Item(item4)};
         Item[] result = tracker.findByName("Item3");
+
         assertArrayEquals(result, expected);
     }
 }
