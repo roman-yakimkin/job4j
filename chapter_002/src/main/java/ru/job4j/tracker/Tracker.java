@@ -55,13 +55,7 @@ public class Tracker {
      * @return - возвращаемая заявка
      */
     public Item findById(String id) {
-        for (int i = 0; i < this.position; i++) {
-            if (this.items[i].getId().equals(id)) {
-                Item item = this.items[i];
-                return item;
-            }
-        }
-        return null;
+        return items[indexOf(id)];
     }
 
     /**
@@ -79,5 +73,34 @@ public class Tracker {
             }
         }
         return Arrays.copyOf(result, countFound);
+    }
+
+    /**
+     * Получить индекс заявки по её идентификатору
+     * @param id - идентификатор заявки
+     * @return - индекс заявки
+     */
+    private int indexOf(String id) {
+        int result = -1;
+        for (int i = 0; i < position; i++) {
+            if (this.items[i].getId().equals(id)) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Замена заявки
+     * @param id - id заявки
+     * @param item - новая заявка
+     */
+    public void replace(String id, Item item) {
+        int index = indexOf(id);
+        if (index != -1) {
+           item.setId(id);
+           this.items[index] = item;
+        }
     }
 }
