@@ -55,7 +55,8 @@ public class Tracker {
      * @return - возвращаемая заявка
      */
     public Item findById(String id) {
-        return items[indexOf(id)];
+        int index = indexOf(id);
+        return (index == -1) ? null : this.items[index];
     }
 
     /**
