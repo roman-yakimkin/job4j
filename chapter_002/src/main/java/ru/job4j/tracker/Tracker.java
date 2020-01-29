@@ -104,4 +104,17 @@ public class Tracker {
            this.items[index] = item;
         }
     }
+
+    /**
+     * Удалить заявку
+     * @param id - id заявки
+     */
+    public void delete(String id) {
+        int index = indexOf(id);
+        if (index != -1) {
+            System.arraycopy(this.items, index + 1, this.items, index, this.position - index - 1);
+            this.items[this.position - 1] = null;
+            this.position--;
+        }
+    }
 }
