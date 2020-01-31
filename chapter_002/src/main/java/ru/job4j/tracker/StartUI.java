@@ -115,13 +115,11 @@ public class StartUI {
     public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ===");
         String id = input.askStr("Input item's id: ");
-        Item item = tracker.findById(id);
-        if (item != null) {
-            String name = input.askStr("Input item's name name: ");
-            item.setName(name);
-            tracker.replace(item.getId(), item);
+        String name = input.askStr("Input item's name name: ");
+        if (tracker.replace(id, new Item(id, name))) {
+            System.out.println("The item with id: " + id + " has been replaced with new name: " + name);
         } else {
-            System.out.println("You've input incorrect item id.");
+            System.out.println("Unable to replace the item with id: " + id);
         }
     }
 
@@ -133,7 +131,11 @@ public class StartUI {
     public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ===");
         String id = input.askStr("Input item's id: ");
-        tracker.delete(id);
+        if (tracker.delete(id)) {
+            System.out.println("The item with id: " + id + " has been deleted");
+        } else {
+            System.out.println("Unable to delete the item with id: " + id);
+        }
     }
 
     /**
