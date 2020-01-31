@@ -1,33 +1,30 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
-
 /**
  * Реализация консольного интерфейса для трекера заявок
  * @author Roman Yakimkin (r.yakimkin@yandex.ru)
  * @since 30.01.2020
- * @version 1.0
+ * @version 2.0
  */
 public class StartUI {
 
     /**
      * Инициализация и цикл работы консольного интерфейса
-     * @param scanner - класс - сканнер
+     * @param input - реализация интерфейса "сканер"
      * @param tracker - класс - трекер
      */
-    public void init(Scanner scanner, Tracker tracker) {
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         Item item;
         Item[] items;
         String id, name;
         do {
             showMenu();
-            int menuItem = Integer.parseInt(scanner.nextLine());
+            int menuItem = input.askInt("");
             switch (menuItem) {
                 case 0:
                     System.out.println("=== Create a new item ===");
-                    System.out.print("Input item's name ");
-                    name = scanner.nextLine();
+                    name = input.askStr("Input item's name ");
                     item = new Item(name);
                     tracker.add(item);
                     break;
@@ -38,12 +35,10 @@ public class StartUI {
                     break;
                 case 2:
                     System.out.println("=== Edit item ===");
-                    System.out.print("Input item's id: ");
-                    id = scanner.nextLine();
+                    id = input.askStr("Input item's id: ");
                     item = tracker.findById(id);
                     if (item != null) {
-                        System.out.print("Input item's name name: ");
-                        name = scanner.nextLine();
+                        name = input.askStr("Input item's name name: ");
                         item.setName(name);
                         tracker.replace(item.getId(), item);
                     } else {
@@ -52,14 +47,12 @@ public class StartUI {
                     break;
                 case 3:
                     System.out.println("=== Delete item ===");
-                    System.out.print("Input item's id: ");
-                    id = scanner.nextLine();
+                    id = input.askStr("Input item's id: ");
                     tracker.delete(id);
                     break;
                 case 4:
                     System.out.println("=== Find item by id ===");
-                    System.out.print("Input item's id: ");
-                    id = scanner.nextLine();
+                    id = input.askStr("Input item's id: ");
                     item = tracker.findById(id);
                     if (item != null) {
                         showItem(item);
@@ -67,8 +60,7 @@ public class StartUI {
                     break;
                 case 5:
                     System.out.println("=== Find item by name ===");
-                    System.out.print("Input items' name: ");
-                    name = scanner.nextLine();
+                    name = input.askStr("Input items' name: ");
                     items = tracker.findByName(name);
                     if (items != null) {
                         showItems(items);
@@ -119,8 +111,8 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(scanner, tracker);
+        new StartUI().init(input, tracker);
     }
 }
