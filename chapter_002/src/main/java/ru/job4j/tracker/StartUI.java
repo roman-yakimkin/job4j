@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import ru.job4j.oop.Transport;
+
 /**
  * Реализация консольного интерфейса для трекера заявок
  * @author Roman Yakimkin (r.yakimkin@yandex.ru)
@@ -20,54 +22,28 @@ public class StartUI {
         String id, name;
         do {
             showMenu();
-            int menuItem = input.askInt("");
+            int menuItem = input.askInt("Select a number from 0 to 6  ");
             switch (menuItem) {
                 case 0:
-                    System.out.println("=== Create a new item ===");
-                    name = input.askStr("Input item's name ");
-                    item = new Item(name);
-                    tracker.add(item);
+                    StartUI.createItem(input, tracker);
                     break;
                 case 1:
-                    System.out.println("=== Show all items ===");
-                    items = tracker.findAll();
-                    showItems(items);
+                    StartUI.showAllItems(input, tracker);
                     break;
                 case 2:
-                    System.out.println("=== Edit item ===");
-                    id = input.askStr("Input item's id: ");
-                    item = tracker.findById(id);
-                    if (item != null) {
-                        name = input.askStr("Input item's name name: ");
-                        item.setName(name);
-                        tracker.replace(item.getId(), item);
-                    } else {
-                        System.out.println("You've input incorrect item id.");
-                    }
+                    StartUI.replaceItem(input, tracker);
                     break;
                 case 3:
-                    System.out.println("=== Delete item ===");
-                    id = input.askStr("Input item's id: ");
-                    tracker.delete(id);
+                    StartUI.deleteItem(input, tracker);
                     break;
                 case 4:
-                    System.out.println("=== Find item by id ===");
-                    id = input.askStr("Input item's id: ");
-                    item = tracker.findById(id);
-                    if (item != null) {
-                        showItem(item);
-                    }
+                    StartUI.findById(input, tracker);
                     break;
                 case 5:
-                    System.out.println("=== Find item by name ===");
-                    name = input.askStr("Input items' name: ");
-                    items = tracker.findByName(name);
-                    if (items != null) {
-                        showItems(items);
-                    }
+                    StartUI.findByName(input, tracker);
                     break;
                 default:
-                    System.out.println("=== Goodbye ===");
+                    StartUI.exit(input, tracker);
                     run = false;
             }
         } while (run);
@@ -82,14 +58,13 @@ public class StartUI {
         for (String item: items) {
             System.out.println(item);
         }
-        System.out.println("Select a number from 0 to 6 ");
     }
 
     /**
      * Show one item
      * @param item - an item
      */
-    private void showItem(Item item) {
+    private static void showItem(Item item) {
         if (item != null) {
             System.out.println("ID: " + item.getId() + ", name: " + item.getName());
         }
@@ -99,15 +74,103 @@ public class StartUI {
      * Show array of items
      * @param items array of items;
      */
-    private void showItems(Item[] items) {
+    private static void showItems(Item[] items) {
         if (items.length > 0) {
             for (Item item: items) {
-                this.showItem(item);
+                showItem(item);
             }
         } else {
             System.out.println("No items");
         }
+    }
 
+    /**
+     * Создать одну заявку
+     * @param input - реализация интерфейса ввода
+     * @param tracker - трекер
+     */
+    private static void createItem(Input input, Tracker tracker) {
+        System.out.println("=== Create a new item ===");
+        String name = input.askStr("Input item's name ");
+        Item item = new Item(name);
+        tracker.add(item);
+    }
+
+    /**
+     * Отобразить все заявки
+     * @param input - реализация интерфейса ввода
+     * @param tracker - трекер
+     */
+    private static void showAllItems(Input input, Tracker tracker) {
+        System.out.println("=== Show all items ===");
+        Item[] items = tracker.findAll();
+        showItems(items);
+    }
+
+    /**
+     * Заменить заявку
+     * @param input - реализация интерфейса ввода
+     * @param tracker - трекер
+     */
+    private static void replaceItem(Input input, Tracker tracker) {
+        System.out.println("=== Edit item ===");
+        String id = input.askStr("Input item's id: ");
+        Item item = tracker.findById(id);
+        if (item != null) {
+            String name = input.askStr("Input item's name name: ");
+            item.setName(name);
+            tracker.replace(item.getId(), item);
+        } else {
+            System.out.println("You've input incorrect item id.");
+        }
+    }
+
+    /**
+     * Удалить заявку
+     * @param input - реализация интерфейса ввода
+     * @param tracker - трекер
+     */
+    private static void deleteItem(Input input, Tracker tracker) {
+        System.out.println("=== Delete item ===");
+        String id = input.askStr("Input item's id: ");
+        tracker.delete(id);
+    }
+
+    /**
+     * Найти заявку по id
+     * @param input - реализация интерфейса ввода
+     * @param tracker - трекер
+     */
+    private static void findById(Input input, Tracker tracker) {
+        System.out.println("=== Find item by id ===");
+        String id = input.askStr("Input item's id: ");
+        Item item = tracker.findById(id);
+        if (item != null) {
+            showItem(item);
+        }
+    }
+
+    /**
+     * Найти заявки по имени
+     * @param input - реализация интерфейса ввода
+     * @param tracker - трекер
+     */
+    private static void findByName(Input input, Tracker tracker) {
+        System.out.println("=== Find item by name ===");
+        String name = input.askStr("Input items' name: ");
+        Item[] items = tracker.findByName(name);
+        if (items != null) {
+            showItems(items);
+        }
+    }
+
+    /**
+     * Завершить работу
+     * @param input - реализация интерфейса ввода
+     * @param tracker - трекер
+     */
+    private static void exit(Input input, Tracker tracker) {
+        System.out.println("=== Goodbye ===");
     }
 
     public static void main(String[] args) {
