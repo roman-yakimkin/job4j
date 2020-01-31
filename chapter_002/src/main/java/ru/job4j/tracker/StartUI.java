@@ -74,7 +74,7 @@ public class StartUI {
      * Show array of items
      * @param items array of items;
      */
-    private static void showItems(Item[] items) {
+    public static void showItems(Item[] items) {
         if (items.length > 0) {
             for (Item item: items) {
                 showItem(item);
@@ -89,7 +89,7 @@ public class StartUI {
      * @param input - реализация интерфейса ввода
      * @param tracker - трекер
      */
-    private static void createItem(Input input, Tracker tracker) {
+    public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new item ===");
         String name = input.askStr("Input item's name ");
         Item item = new Item(name);
@@ -101,7 +101,7 @@ public class StartUI {
      * @param input - реализация интерфейса ввода
      * @param tracker - трекер
      */
-    private static void showAllItems(Input input, Tracker tracker) {
+    public static void showAllItems(Input input, Tracker tracker) {
         System.out.println("=== Show all items ===");
         Item[] items = tracker.findAll();
         showItems(items);
@@ -112,7 +112,7 @@ public class StartUI {
      * @param input - реализация интерфейса ввода
      * @param tracker - трекер
      */
-    private static void replaceItem(Input input, Tracker tracker) {
+    public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ===");
         String id = input.askStr("Input item's id: ");
         Item item = tracker.findById(id);
@@ -130,7 +130,7 @@ public class StartUI {
      * @param input - реализация интерфейса ввода
      * @param tracker - трекер
      */
-    private static void deleteItem(Input input, Tracker tracker) {
+    public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ===");
         String id = input.askStr("Input item's id: ");
         tracker.delete(id);
@@ -141,7 +141,7 @@ public class StartUI {
      * @param input - реализация интерфейса ввода
      * @param tracker - трекер
      */
-    private static void findById(Input input, Tracker tracker) {
+    public static void findById(Input input, Tracker tracker) {
         System.out.println("=== Find item by id ===");
         String id = input.askStr("Input item's id: ");
         Item item = tracker.findById(id);
@@ -155,7 +155,7 @@ public class StartUI {
      * @param input - реализация интерфейса ввода
      * @param tracker - трекер
      */
-    private static void findByName(Input input, Tracker tracker) {
+    public static void findByName(Input input, Tracker tracker) {
         System.out.println("=== Find item by name ===");
         String name = input.askStr("Input items' name: ");
         Item[] items = tracker.findByName(name);
@@ -169,7 +169,7 @@ public class StartUI {
      * @param input - реализация интерфейса ввода
      * @param tracker - трекер
      */
-    private static void exit(Input input, Tracker tracker) {
+    public static void exit(Input input, Tracker tracker) {
         System.out.println("=== Goodbye ===");
     }
 
