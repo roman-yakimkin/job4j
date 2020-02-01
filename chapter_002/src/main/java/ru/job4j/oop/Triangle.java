@@ -1,7 +1,5 @@
 package ru.job4j.oop;
 
-import ru.job4j.condition.Point;
-
 /**
  * Класс, представляющий треугольник
  * @author Roman Yakimkin (r.yakimkin@yandex.ru)
