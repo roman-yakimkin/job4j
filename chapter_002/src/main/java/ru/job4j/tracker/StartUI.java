@@ -15,48 +15,24 @@ public class StartUI {
      * @param input - реализация интерфейса "сканер"
      * @param tracker - класс - трекер
      */
-    public void init(Input input, Tracker tracker) {
+    public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
-        Item item;
-        Item[] items;
-        String id, name;
         do {
-            showMenu();
+            showMenu(actions);
             int menuItem = input.askInt("Select a number from 0 to 6  ");
-            switch (menuItem) {
-                case 0:
-                    StartUI.createItem(input, tracker);
-                    break;
-                case 1:
-                    StartUI.showAllItems(input, tracker);
-                    break;
-                case 2:
-                    StartUI.replaceItem(input, tracker);
-                    break;
-                case 3:
-                    StartUI.deleteItem(input, tracker);
-                    break;
-                case 4:
-                    StartUI.findById(input, tracker);
-                    break;
-                case 5:
-                    StartUI.findByName(input, tracker);
-                    break;
-                default:
-                    StartUI.exit(input, tracker);
-                    run = false;
-            }
+            UserAction action = actions[menuItem];
+            run = action.execute(input, tracker);
         } while (run);
     }
 
     /**
      * Отобразить консольное меню
      */
-    private void showMenu() {
+    private void showMenu(UserAction[] actions) {
         String[] items = {"0. Add new item", "1. Show all items", "2. Edit item", "3. Delete item", "4. Find item by Id", "5. Find items by name", "6. Exit program"};
         System.out.println("Menu");
-        for (String item: items) {
-            System.out.println(item);
+        for (int i=0; i < actions.length; i++) {
+            System.out.println(i + ". " + actions[i].name());
         }
     }
 
@@ -178,6 +154,15 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(input, tracker);
+        UserAction[] actions = {
+                new CreateAction(),
+                new ShowAllAction(),
+                new ReplaceAction(),
+                new DeleteAction(),
+                new FindByIdAction(),
+                new FindByNameAction(),
+                new ExitAction()
+        };
+        new StartUI().init(input, tracker, actions);
     }
 }
