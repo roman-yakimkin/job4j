@@ -12,8 +12,11 @@ public class SquareTest {
         assertThat(square.draw(), is(
            new StringBuilder()
                 .append("++++")
+                .append(System.lineSeparator())
                 .append("+  +")
+                .append(System.lineSeparator())
                 .append("+  +")
+                .append(System.lineSeparator())
                 .append("++++")
                 .toString()
         ));
