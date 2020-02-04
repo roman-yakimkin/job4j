@@ -21,7 +21,7 @@ public class Fact {
             throw new IllegalArgumentException("Argument for factorial must be 0 or more");
         }
         int rsl = 1;
-        for (int index = 1; index != n; index++) {
+        for (int index = 1; index <= n; index++) {
             rsl *= index;
         }
         return rsl;
