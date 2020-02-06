@@ -32,4 +32,20 @@ public class ConsoleInput implements Input {
     public int askInt(String question) {
         return Integer.valueOf(askStr(question));
     }
+
+    /**
+     * Ввод целочисленного значения от 0 до max с приглашением ко вводу
+     * @param question - текст приглашения ко вводу
+     * @param max - максимальное значение
+     * @return - целое число
+     */
+    @Override
+    public int askInt(String question, int max) throws IllegalStateException {
+        int select = askInt(question);
+        if (select >= 0 && select <= max) {
+            return select;
+        } else {
+            throw new IllegalStateException(String.format("Out of about %s > [0, %s]", select, max));
+        }
+    }
 }

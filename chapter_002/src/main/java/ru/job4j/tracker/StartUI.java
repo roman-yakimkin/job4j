@@ -19,7 +19,7 @@ public class StartUI {
         boolean run = true;
         do {
             showMenu(actions);
-            int menuItem = input.askInt("Select a number from 0 to 6  ");
+            int menuItem = input.askInt("Select a number from 0 to 6  ", actions.length);
             UserAction action = actions[menuItem];
             run = action.execute(input, tracker);
         } while (run);
@@ -36,7 +36,7 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(),
