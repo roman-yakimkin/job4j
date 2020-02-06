@@ -6,7 +6,24 @@ package ru.job4j.tracker;
  * @since 06.02.2020
  * @version 1.0
  */
-public class ValidateInput extends ConsoleInput {
+public class ValidateInput implements Input {
+
+    private final Input input;
+
+    public ValidateInput(Input input) {
+        this.input = input;
+    }
+
+    /**
+     * Получить строковое значение
+     * @param question - текст приглашение ко вводу
+     * @return - строковое значение
+     */
+    @Override
+    public String askStr(String question) {
+        return input.askStr(question);
+    }
+
     /**
      * Циклический ввод целого числа
      * @param question - текст приглашения ко вводу
@@ -18,7 +35,7 @@ public class ValidateInput extends ConsoleInput {
         int value = -1;
         do {
             try {
-                value = super.askInt(question);
+                value = input.askInt(question);
                 invalid = false;
             } catch (NumberFormatException nfe) {
                 System.out.println("Please input valid data again.");
@@ -39,7 +56,7 @@ public class ValidateInput extends ConsoleInput {
         int value = -1;
         do {
             try {
-                value = super.askInt(question, max);
+                value = input.askInt(question, max);
                 invalid = false;
             } catch (IllegalStateException moe) {
                 System.out.println("Please select a key from menu");
