@@ -24,6 +24,10 @@ public class StubInput implements Input {
 
     @Override
     public int askInt(String question, int max) {
-        return askInt(question);
+        int value = askInt(question);
+        if (value < 0 || value > max) {
+            throw new IllegalStateException(String.format("Out of about %s > [0, %s]", value, max));
+        }
+        return value;
     }
 }

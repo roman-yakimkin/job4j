@@ -59,9 +59,9 @@ public class ValidateInput implements Input {
                 value = input.askInt(question, max);
                 invalid = false;
             } catch (IllegalStateException moe) {
-                System.out.println("Please select a key from menu");
+                System.out.println("Please select a key from menu.");
             } catch (NumberFormatException nfe) {
-                System.out.println("Please input valid data again");
+                System.out.println("Please input valid data again.");
             }
         } while (invalid);
         return value;
