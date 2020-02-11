@@ -6,26 +6,30 @@ package ru.job4j.walker;
  * @since 11.02.2020
  * @version 1.0
  */
-public class Player {
+public class Player implements IPlayer {
 
     private String name;
 
     /**
      * Ссылка на фишку игрока
      */
-    private Chip chip;
+    private IChip chip;
 
     /**
      * Ссылка на кубик
      */
-    private Dice dice;
+    private IDice dice;
 
-    public Player(String name, Chip chip, Dice dice, Route route) {
+    /**
+     * Ссылка на маршрут
+     */
+    private IRoute route;
+
+    public Player(String name, IChip chip, IDice dice, IRoute route) {
         this.name = name;
         this.chip = chip;
         this.dice = dice;
-        chip.setPlayer(this);
-        chip.setRoute(route);
+        this.route = route;
     }
 
     public String getName() {
@@ -40,7 +44,7 @@ public class Player {
      * Получить фишку
      * @return - ссылка на фишку
      */
-    public Chip getChip() {
+    public IChip getChip() {
         return chip;
     }
 
@@ -48,7 +52,7 @@ public class Player {
      * Установить фишку игрока
      * @param chip
      */
-    public void setChip(Chip chip) {
+    public void setChip(IChip chip) {
         this.chip = chip;
     }
 
@@ -56,11 +60,11 @@ public class Player {
      * Получить ссылку на кубик
      * @return ссылка на кубик
      */
-    public Dice getDice() {
+    public IDice getDice() {
        return dice;
     }
 
-    public void setDice(Dice dice) {
+    public void setDice(IDice dice) {
         this.dice = dice;
     }
 
@@ -71,6 +75,14 @@ public class Player {
     public int rollDiceAndGetValue() {
         dice.roll();
         return dice.getValue();
+    }
+
+    /**
+     * Получить позицию фишки
+     * @return позиция фишки игрока
+     */
+    public int getChipPosition() {
+        return chip.getPosition();
     }
 
     /**
@@ -86,7 +98,7 @@ public class Player {
      * @return истина, если выиграл
      */
     public boolean isWon() {
-        return (this.chip.getPosition() >= this.chip.getRoute().getLength());
+        return (this.chip.getPosition() >= this.route.getLength());
     }
 
 }

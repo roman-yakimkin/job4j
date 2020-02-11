@@ -6,7 +6,7 @@ package ru.job4j.walker;
  * @since 11.02.2020
  * @version 1.0
  */
-public class Chip {
+public class Chip implements IChip {
 
     /**
      * Позиция фишки
@@ -14,24 +14,17 @@ public class Chip {
     private int position = 0;
 
     /**
-     * Ссылка на игрока
-     */
-    private Player player;
-
-    /**
      * Ссылка на маршрут
      */
-    private Route route;
+    private IRoute route;
 
     public Chip() { }
 
     /**
      * Конструктор фишки
-     * @param player - ссылка на игрока
      * @param route - ссылка на маршрут
      */
-    public Chip(Player player, Route route) {
-        this.player = player;
+    public Chip(IRoute route) {
         this.route = route;
     }
 
@@ -39,19 +32,11 @@ public class Chip {
         return position;
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     /**
      * Получить ссылку на маршрут
      * @return - ссылка на маршрут
      */
-    public Route getRoute() {
+    public IRoute getRoute() {
         return route;
     }
 
@@ -59,7 +44,7 @@ public class Chip {
      * Связать фишку с маршрутом
      * @param route - ссылка на маршрут
      */
-    public void setRoute(Route route) {
+    public void setRoute(IRoute route) {
         this.route = route;
     }
 

@@ -6,12 +6,7 @@ package ru.job4j.walker;
  * @since 11.02.2020
  * @version 1.0
  */
-public class Route {
-
-    /**
-     * Игральные фишки
-     */
-    private Chip[] chips;
+public class Route implements IRoute {
 
     /**
      * Длина маршрута
@@ -24,7 +19,7 @@ public class Route {
 
     /**
      * Получить длину маршрута
-     * @return
+     * @return длина маршрута
      */
     public int getLength() {
         return length;

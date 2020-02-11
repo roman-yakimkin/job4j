@@ -11,27 +11,25 @@ public class Game {
     /**
      * Список пользователей
      */
-    private Player[] players;
+    private IPlayer[] players;
 
     /**
      * Игровой кубик
      */
-    private Dice dice;
+    private IDice dice;
 
     /**
      * Маршрут игры
      */
-    private Route route;
+    private IRoute route;
 
     private int playerIndex = -1;
 
-    public Game(String name1, String name2, int routeLength) {
-        route = new Route(routeLength);
-        dice = new Dice();
-        Player player1 = new Player(name1, new Chip(), dice, route);
-        Player player2 = new Player(name2, new Chip(), dice, route);
-        players = new Player[]{player1, player2};
-        playerIndex = firstPlayerIndex();
+    public Game(IPlayer[] players, IDice dice, IRoute route) {
+        this.players = players;
+        this.dice = dice;
+        this.route = route;
+        this.playerIndex = firstPlayerIndex();
     }
 
     private int firstPlayerIndex() {
@@ -49,7 +47,7 @@ public class Game {
         return playerIndex;
     }
 
-    private Player getCurrentPlayer() {
+    private IPlayer getCurrentPlayer() {
         return players[getPlayerIndex()];
     }
 
@@ -58,13 +56,13 @@ public class Game {
     }
 
     public void execute() {
-        Player player;
+        IPlayer player;
         do {
-            player = getCurrentPlayer();
+            player = this.getCurrentPlayer();
             int delta = player.rollDiceAndGetValue();
             System.out.println(player.getName() + " бросает кубик и выпадает " + delta);
             player.moveChip(delta);
-            System.out.println(player.getName() + " передвигает фишку на " + player.getChip().getPosition() + " позицию");
+            System.out.println(player.getName() + " передвигает фишку на " + player.getChipPosition() + " позицию");
             nextPlayer();
         } while (!getCurrentPlayer().isWon());
         System.out.println("Победил " + player.getName());

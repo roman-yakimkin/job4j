@@ -8,7 +8,7 @@ import java.util.Random;
  * @since 11.02.2020
  * @version 1.0
  */
-public class Dice {
+public class Dice implements IDice {
 
     /**
      * Значение на кубике

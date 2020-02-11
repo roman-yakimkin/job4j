@@ -9,7 +9,13 @@ package ru.job4j.walker;
 public class WalkerUI {
 
     public static void main(String[] args) {
-        Game game = new Game("First player", "Second player", 100);
+        IRoute route = new Route(100);
+        IDice dice = new Dice();
+        IPlayer[] players = new IPlayer[2];
+        players[0] = new Player("First Player", new Chip(), dice, route);
+        players[1] = new Player("Second Player", new Chip(), dice, route);
+
+        Game game = new Game(players, dice, route);
         game.execute();
     }
 }
