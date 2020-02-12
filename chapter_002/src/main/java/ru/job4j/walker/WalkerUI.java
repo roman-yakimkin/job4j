@@ -15,7 +15,8 @@ public class WalkerUI {
         players[0] = new Player("First Player", new Chip(), dice, route);
         players[1] = new Player("Second Player", new Chip(), dice, route);
 
-        Game game = new Game(players, dice, route);
+        IGame game = new Game();
+        game.init(players, dice, route);
         game.execute();
     }
 }

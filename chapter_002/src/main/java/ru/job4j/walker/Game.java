@@ -6,7 +6,7 @@ package ru.job4j.walker;
  * @since 11.02.2020
  * @version 1.0
  */
-public class Game {
+public class Game implements IGame {
 
     /**
      * Список пользователей
@@ -23,15 +23,22 @@ public class Game {
      */
     private IRoute route;
 
+    /**
+     * Индекс текущего игрока (0 или 1)
+     */
     private int playerIndex = -1;
 
-    public Game(IPlayer[] players, IDice dice, IRoute route) {
+    public void init(IPlayer[] players, IDice dice, IRoute route) {
         this.players = players;
         this.dice = dice;
         this.route = route;
         this.playerIndex = firstPlayerIndex();
     }
 
+    /**
+     * Разыграть, кто будет первым ходить - кидать кубик, пока у одного игрока не выпадет больше, чем у другого
+     * @return - индекс первого игрока
+     */
     private int firstPlayerIndex() {
         int dice1, dice2;
         do {
@@ -40,7 +47,8 @@ public class Game {
           dice.roll();
           dice2 = dice.getValue();
         } while (dice1 == dice2);
-        return (dice1 > dice2) ? 0 : 1;
+        this.playerIndex = (dice1 > dice2) ? 0 : 1;
+        return this.playerIndex;
     }
 
     private int getPlayerIndex() {
@@ -64,7 +72,7 @@ public class Game {
             player.moveChip(delta);
             System.out.println(player.getName() + " передвигает фишку на " + player.getChipPosition() + " позицию");
             nextPlayer();
-        } while (!getCurrentPlayer().isWon());
+        } while (!player.isWon());
         System.out.println("Победил " + player.getName());
     }
 }
