@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Реализация консольного интерфейса для трекера заявок
@@ -16,7 +17,7 @@ public class StartUI {
      * @param input - реализация интерфейса "сканер"
      * @param tracker - класс - трекер
      */
-    public void init(Input input, Tracker tracker, ArrayList<UserAction> actions) {
+    public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;
         do {
             showMenu(actions);
@@ -29,7 +30,7 @@ public class StartUI {
     /**
      * Отобразить консольное меню
      */
-    private void showMenu(ArrayList<UserAction> actions) {
+    private void showMenu(List<UserAction> actions) {
         System.out.println("Menu (ver. 3) ");
         for (UserAction action : actions) {
             System.out.println(actions.indexOf(action) + ". " + action.name());
@@ -40,7 +41,7 @@ public class StartUI {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<UserAction>(Arrays.asList(
+        List<UserAction> actions = new ArrayList<UserAction>(Arrays.asList(
                 new CreateAction(),
                 new ShowAllAction(),
                 new ReplaceAction(),

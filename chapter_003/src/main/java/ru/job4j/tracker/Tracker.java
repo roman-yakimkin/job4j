@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -14,7 +15,7 @@ public class Tracker {
     /**
      * Массив для хранения заявок
      */
-    private final ArrayList<Item> items = new ArrayList<Item>();
+    private final List<Item> items = new ArrayList<Item>();
 
     /**
      * Генерация уникального ключа для заявки
@@ -40,7 +41,7 @@ public class Tracker {
      * Получть все заявки
      * @return массив заявок
      */
-    public ArrayList<Item> findAll() {
+    public List<Item> findAll() {
         return items;
     }
 
@@ -59,8 +60,8 @@ public class Tracker {
      * @param name - имя заявки
      * @return - список заявок
      */
-    public ArrayList<Item> findByName(String name) {
-        ArrayList<Item> result = new ArrayList<Item>();
+    public List<Item> findByName(String name) {
+        List<Item> result = new ArrayList<Item>();
         for (Item item : this.items) {
             if (item.getName().equals(name)) {
                 result.add(item);
