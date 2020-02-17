@@ -18,7 +18,7 @@ public class JobSorter {
                 new Job("Reboot the server", 1)
         );
         System.out.println(jobs);
-        Collections.sort(jobs);
+        Collections.sort(jobs, new SortByNameJob());
         System.out.println(jobs);
     }
 }
