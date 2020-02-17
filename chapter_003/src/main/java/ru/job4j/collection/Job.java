@@ -6,7 +6,7 @@ package ru.job4j.collection;
  * @since 16.01.2020
  * @version 1.0
  */
-public class Job {
+public class Job implements Comparable<Job> {
     /**
      * Название задачи
      */
@@ -35,5 +35,10 @@ public class Job {
                 + "name='" + name + '\''
                 + ", priority=" + priority
                 + '}';
+    }
+
+    @Override
+    public int compareTo(Job another) {
+        return Integer.compare(priority, another.priority);
     }
 }
