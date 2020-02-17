@@ -1,9 +1,6 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Класс - банковский сервис
@@ -41,12 +38,13 @@ public class BankService {
      * @return - информация о пользователе
      */
     public User findByPassport(String passport) {
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                return user;
-            }
+        User result = null;
+        List<User> userList = new ArrayList<>(users.keySet());
+        int index = userList.indexOf(new User(passport, "dummy"));
+        if (index != -1) {
+            result = userList.get(index);
         }
-        return null;
+        return result;
     }
 
     /**
@@ -78,19 +76,24 @@ public class BankService {
      * @return - истина, если операция завершилась успешно
      */
     public boolean transferMoney(String srcPassport, String srcRequisite, String dstPassport, String dstRequisite, double amount) {
+        boolean result = true;
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
         if (srcAccount == null) {
-            return false;
+            result = false;
+        } else {
+            Account dstAccount = findByRequisite(dstPassport, dstRequisite);
+            if (dstAccount == null) {
+                result = false;
+            } else {
+                if (srcAccount.getBalance() < amount) {
+                    result = false;
+                } else {
+                    srcAccount.setBalance(srcAccount.getBalance() - amount);
+                    dstAccount.setBalance(dstAccount.getBalance() + amount);
+                }
+            }
+
         }
-        Account dstAccount = findByRequisite(dstPassport, dstRequisite);
-        if (dstAccount == null) {
-            return false;
-        }
-        if (srcAccount.getBalance() < amount) {
-            return false;
-        }
-        srcAccount.setBalance(srcAccount.getBalance() - amount);
-        dstAccount.setBalance(dstAccount.getBalance() + amount);
-        return true;
+        return result;
     }
 }
