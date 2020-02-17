@@ -76,24 +76,16 @@ public class BankService {
      * @return - истина, если операция завершилась успешно
      */
     public boolean transferMoney(String srcPassport, String srcRequisite, String dstPassport, String dstRequisite, double amount) {
-        boolean result = true;
+        boolean result = false;
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
-        if (srcAccount == null) {
-            result = false;
-        } else {
-            Account dstAccount = findByRequisite(dstPassport, dstRequisite);
-            if (dstAccount == null) {
-                result = false;
-            } else {
-                if (srcAccount.getBalance() < amount) {
-                    result = false;
-                } else {
-                    srcAccount.setBalance(srcAccount.getBalance() - amount);
-                    dstAccount.setBalance(dstAccount.getBalance() + amount);
-                }
-            }
+        Account dstAccount = findByRequisite(dstPassport, dstRequisite);
 
+        if (srcAccount != null && dstAccount != null && srcAccount.getBalance() >= amount) {
+            srcAccount.setBalance(srcAccount.getBalance() - amount);
+            dstAccount.setBalance(dstAccount.getBalance() + amount);
+            result = true;
         }
+
         return result;
     }
 }
