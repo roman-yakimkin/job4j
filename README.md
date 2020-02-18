@@ -1,16 +1,7 @@
-# job4j
-new content of this file
-A new line is added
+[![Build Status](https://travis-ci.org/roman-yakimkin/job4j.svg?branch=master)](https://travis-ci.org/roman-yakimkin/job4j)
+[![codecov](https://codecov.io/gh/roman-yakimkin/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/roman-yakimkin/job4j)
 
-Объединение зафиксированных изменений 
 
-Отработка объединения коммитов
+#junior
 
-18.01.2020 - производится работа с ветками в git
-
-19.01.2020 - конфликт веток преодолен
-
-Изменения в README для новой ветки task_219897
-
-Создание ветки hotfix_139840 на IDEA
-19.01.2020 - успешно добавили ветку task_219897
+Начальный проект для курса Junior
