@@ -12,7 +12,7 @@ public class Machine {
     /**
      * Разменные монеты
      */
-    private final int[] COINS = {10, 5, 2, 1};
+    private final int[] coins = {10, 5, 2, 1};
 
     /**
      * Вернуть сдачу монетами
@@ -26,9 +26,9 @@ public class Machine {
         int coinIndex = 0;
         int rest = money - price;
         while (rest > 0) {
-            if (rest >= COINS[coinIndex]) {
-                rsl[size++] = COINS[coinIndex];
-                rest -= COINS[coinIndex];
+            if (rest >= coins[coinIndex]) {
+                rsl[size++] = coins[coinIndex];
+                rest -= coins[coinIndex];
             } else {
                 coinIndex++;
             }

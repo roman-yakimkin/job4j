@@ -42,8 +42,7 @@ public class Order {
             return false;
         }
         Order order = (Order) o;
-        return Objects.equals(getNumber(), order.getNumber()) &&
-                Objects.equals(getName(), order.getName());
+        return Objects.equals(getNumber(), order.getNumber()) && Objects.equals(getName(), order.getName());
     }
 
     @Override
