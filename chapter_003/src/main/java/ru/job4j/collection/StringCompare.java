@@ -11,6 +11,18 @@ import java.util.Comparator;
 public class StringCompare implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
-        return 0;
+        int result = 0;
+        int lenLeft = left.length();
+        int lenRight = right.length();
+        for (int i = 0; i < Math.min(lenLeft, lenRight); i++) {
+            result = Character.compare(left.charAt(i), right.charAt(i));
+            if (result != 0) {
+                break;
+            }
+        }
+        if (result == 0) {
+            result = lenLeft - lenRight;
+        }
+        return result;
     }
 }
