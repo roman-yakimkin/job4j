@@ -39,10 +39,11 @@ public class BankService {
      */
     public User findByPassport(String passport) {
         User result = null;
-        List<User> userList = new ArrayList<>(users.keySet());
-        int index = userList.indexOf(new User(passport, "dummy"));
-        if (index != -1) {
-            result = userList.get(index);
+        for(User user : users.keySet()) {
+            if (user.getPassport().equals(passport)) {
+                result = user;
+                break;
+            }
         }
         return result;
     }
