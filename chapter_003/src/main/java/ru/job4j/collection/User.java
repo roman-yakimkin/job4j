@@ -53,4 +53,9 @@ public class User implements Comparable<User> {
     public int hashCode() {
         return Objects.hash(name, age);
     }
+
+    @Override
+    public String toString() {
+        return "User{" + name + ", " + age + " years}";
+    }
 }
