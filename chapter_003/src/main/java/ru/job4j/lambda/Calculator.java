@@ -30,12 +30,7 @@ public class Calculator {
 
     public static void main(String[] args) {
         Calculator calc = new Calculator();
-        calc.multiple(0, 10, 2, new Operation() {
-            @Override
-            public double calc(int left, int right) {
-                return left * right;
-            }
-        });
+        calc.multiple(0, 10, 2, (value, index) -> value * index);
     }
 
 
