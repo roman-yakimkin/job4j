@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Реализация консольного интерфейса для трекера заявок
@@ -11,6 +12,15 @@ import java.util.List;
  * @version 2.0
  */
 public class StartUI {
+    private final Input input;
+    private final Tracker tracker;
+    private final Consumer<String> output;
+
+    public StartUI(Input input, Tracker tracker, Consumer<String> output) {
+        this.input = input;
+        this.tracker = tracker;
+        this.output = output;
+    }
 
     /**
      * Инициализация и цикл работы консольного интерфейса
@@ -18,6 +28,7 @@ public class StartUI {
      * @param tracker - класс - трекер
      */
     public void init(Input input, Tracker tracker, List<UserAction> actions) {
+
         boolean run = true;
         do {
             showMenu(actions);
