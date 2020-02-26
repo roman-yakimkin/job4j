@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 /**
  * Действие - удаление заявки
  * @author Roman Yakimkin (r.yakimkin@yandex.ru)
@@ -13,12 +15,12 @@ public class DeleteAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         String id = input.askStr("Input item's id: ");
         if (tracker.delete(id)) {
-            System.out.println("The item with id: " + id + " has been deleted");
+            output.accept("The item with id: " + id + " has been deleted");
         } else {
-            System.out.println("Unable to delete the item with id: " + id);
+            output.accept("Unable to delete the item with id: " + id);
         }
         return true;
     }

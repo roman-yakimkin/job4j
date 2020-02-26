@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 /**
  * Интерфейс действий пользователя
  * @author Roman Yakimkin (r.yakimkin@yandex.ru)
@@ -8,5 +10,5 @@ package ru.job4j.tracker;
  */
 public interface UserAction {
     String name();
-    boolean execute(Input input, Tracker tracker);
+    boolean execute(Input input, Tracker tracker, Consumer<String> output);
 }

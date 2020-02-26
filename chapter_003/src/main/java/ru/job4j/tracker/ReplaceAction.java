@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 /**
  * Действие - замена заявки
  * @author Roman Yakimkin (r.yakimkin@yandex.ru)
@@ -13,13 +15,13 @@ public class ReplaceAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         String id = input.askStr("Input item's id: ");
         String name = input.askStr("Input item's name name: ");
         if (tracker.replace(id, new Item(id, name))) {
-            System.out.println("The item with id: " + id + " has been replaced with new name: " + name);
+            output.accept("The item with id: " + id + " has been replaced with new name: " + name);
         } else {
-            System.out.println("Unable to replace the item with id: " + id);
+            output.accept("Unable to replace the item with id: " + id);
         }
         return true;
     }
