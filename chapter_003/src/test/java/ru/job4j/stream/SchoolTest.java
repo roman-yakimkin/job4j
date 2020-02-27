@@ -4,6 +4,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 import static org.hamcrest.core.Is.is;
@@ -62,6 +63,29 @@ public class SchoolTest {
         List<Student> expected = List.of(
                 new Student("Smirnov", 20)
         );
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void testToMap() {
+        List<Student> students = List.of(
+                new Student("Ivanov", 90),
+                new Student("Petrov", 75),
+                new Student("Smirnov", 20),
+                new Student("Sidorov", 50),
+                new Student("Sergeev", 70)
+        );
+        School school = new School();
+
+        Map<String, Student> result = school.convertToMap(students);
+        Map<String, Student> expected = Map.of(
+                "Ivanov", new Student("Ivanov", 90),
+                "Petrov", new Student("Petrov", 75),
+                "Smirnov", new Student("Smirnov", 20),
+                "Sidorov", new Student("Sidorov", 50),
+                "Sergeev", new Student("Sergeev", 70)
+        );
+
         assertThat(result, is(expected));
     }
 }
