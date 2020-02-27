@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Действие - поиск заявки по имени
@@ -16,15 +17,15 @@ public class FindByNameAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         String name = input.askStr("Input items' name: ");
         List<Item> items = tracker.findByName(name);
         if (items.size() > 0) {
             for (Item item: items) {
-                System.out.println("ID: " + item.getId() + ", name: " + item.getName());
+                output.accept("ID: " + item.getId() + ", name: " + item.getName());
             }
         } else {
-            System.out.println("No items");
+            output.accept("No items");
         }
         return true;
     }
