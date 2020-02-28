@@ -3,6 +3,7 @@ package ru.job4j.stream;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -86,6 +87,28 @@ public class SchoolTest {
                 "Sergeev", new Student("Sergeev", 70)
         );
 
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void testLevelOf() {
+        List<Student> students = Arrays.asList(
+                new Student("Ivanov", 90),
+                new Student("Petrov", 75),
+                null,
+                new Student("Smirnov", 20),
+                new Student("Sidorov", 50),
+                null,
+                new Student("Sergeev", 70),
+                null
+        );
+        School school = new School();
+        List<Student> result = school.levelOf(students, 50);
+        List<Student> expected = List.of(
+                new Student("Ivanov", 90),
+                new Student("Petrov", 75),
+                new Student("Sergeev", 70)
+        );
         assertThat(result, is(expected));
     }
 }

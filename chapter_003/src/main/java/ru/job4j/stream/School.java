@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Класс - школа
@@ -32,5 +33,19 @@ public class School {
         return students.stream().distinct().collect(Collectors.toMap(
             e -> e.getName(), e -> e
         ));
+    }
+
+    /**
+     * Получить список студентов с баллом аттестата больще некоторого значения
+     * @param students - список студентов
+     * @param bound - минимальный балл
+     * @return - список студентов с баллом больше требуемого
+     */
+    List<Student> levelOf(List<Student> students, int bound) {
+        return students.stream()
+                .flatMap(Stream::ofNullable)
+                .sorted()
+                .takeWhile(student -> student.getScore() > bound)
+                .collect(Collectors.toList());
     }
 }

@@ -8,7 +8,7 @@ import java.util.Objects;
  * @version 1.0
  * @since 1.0
  */
-public class Student {
+public class Student implements Comparable<Student> {
     /**
      * Имя студента
      */
@@ -51,5 +51,10 @@ public class Student {
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getScore());
+    }
+
+    @Override
+    public int compareTo(Student student) {
+        return student.score - score;
     }
 }
