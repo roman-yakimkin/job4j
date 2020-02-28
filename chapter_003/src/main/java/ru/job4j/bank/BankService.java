@@ -1,6 +1,7 @@
 package ru.job4j.bank;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Класс - банковский сервис
@@ -27,8 +28,7 @@ public class BankService {
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         if (user != null) {
-            List<Account> accounts = users.get(user);
-            accounts.add(account);
+            users.get(user).add(account);
         }
     }
 
@@ -38,14 +38,10 @@ public class BankService {
      * @return - информация о пользователе
      */
     public User findByPassport(String passport) {
-        User result = null;
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                result = user;
-                break;
-            }
-        }
-        return result;
+       return users.keySet().stream()
+               .filter(user -> user.getPassport().equals(passport))
+               .findAny()
+               .orElse(null);
     }
 
     /**
@@ -56,15 +52,10 @@ public class BankService {
      */
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
-        if (user != null) {
-
-            List<Account> accounts = users.get(user);
-            int index = accounts.indexOf(new Account(requisite, -1));
-            if (index != -1) {
-                return accounts.get(index);
-            }
-        }
-        return null;
+        return user == null ? null : users.get(user).stream()
+                .filter(account -> account.equals(new Account(requisite, -1)))
+                .findAny()
+                .orElse(null);
     }
 
     /**
