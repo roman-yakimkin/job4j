@@ -13,12 +13,12 @@ public class ProfilesTest {
     @Test
     public void addressTest() {
 
-        Address address1 = new Address("Moscow", "Lenina", 25,10);
-        Address address2 = new Address("Rostov-na-Donu", "Bolshaya Sadovaya", 14,3);
-        Address address3 = new Address("Taganrog", "Chekhova", 10,20);
-        Address address4 = new Address("Taganrog", "Chekhova", 10,20);
-        Address address5 = new Address("Rostov-na-Donu", "Bolshaya Sadovaya", 14,3);
-        Address address6 = new Address("Azov", "Beregovaya", 20,2);
+        Address address1 = new Address("Moscow", "Lenina", 25, 10);
+        Address address2 = new Address("Rostov-na-Donu", "Bolshaya Sadovaya", 14, 3);
+        Address address3 = new Address("Taganrog", "Chekhova", 10, 20);
+        Address address4 = new Address("Taganrog", "Chekhova", 10, 20);
+        Address address5 = new Address("Rostov-na-Donu", "Bolshaya Sadovaya", 14, 3);
+        Address address6 = new Address("Azov", "Beregovaya", 20, 2);
         List<Profile> people = Arrays.asList(
                 new Profile(address1),
                 new Profile(address2),
