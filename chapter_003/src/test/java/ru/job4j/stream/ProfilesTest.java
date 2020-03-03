@@ -29,6 +29,7 @@ public class ProfilesTest {
         );
         Profiles profiles = new Profiles();
         List<Address> result = profiles.collect(people);
+        
         List<Address> expected = Arrays.asList(
                 new Address(address6),
                 new Address(address1),
