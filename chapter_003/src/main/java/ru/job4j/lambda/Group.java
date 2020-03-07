@@ -29,13 +29,10 @@ public class Group {
      */
     public static Map<String, Set<String>> sections(List<Student> students) {
         return students.stream()
-                .flatMap((student) -> {
-                    List<Holder> holder = new ArrayList<Holder>();
-                    for (String unit : student.getUnits()) {
-                        holder.add(new Holder(unit, student.getName()));
-                    }
-                    return holder.stream();
-                })
+                .flatMap((student) -> student.getUnits().stream().map(
+                        (unit) -> new Holder(unit, student.getName())
+                        )
+                )
                 .collect(
                         Collectors.groupingBy(t -> t.key,
                                 Collector.of(

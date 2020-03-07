@@ -16,9 +16,9 @@ public class CountTest {
         List<Integer> numbers = List.of(1, 2, 3, 2, 1, 2);
         Map<Integer, Long> result = Count.count(numbers);
         Map<Integer, Long> expected = Map.of(
-                1, (long) 2,
-                2, (long) 3,
-                3, (long) 1
+                1, 2L,
+                2, 3L,
+                3, 1L
         );
         assertThat(result, is(expected));
     }
