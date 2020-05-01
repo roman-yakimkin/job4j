@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  * @version 1.0
  */
 public class BankService {
-    private Map<User, List<Account>> users = new HashMap<>();
+    private final Map<User, List<Account>> users = new HashMap<>();
 
     /**
      * Добавить пользователя
@@ -26,10 +26,8 @@ public class BankService {
      * @param account - банковской счет
      */
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user != null) {
-            users.get(user).add(account);
-        }
+        Optional<User> user = findByPassport(passport);
+        user.ifPresent((u) -> users.get(u).add(account));
     }
 
     /**
@@ -37,11 +35,10 @@ public class BankService {
      * @param passport - паспортные данные
      * @return - информация о пользователе
      */
-    public User findByPassport(String passport) {
+    public Optional<User> findByPassport(String passport) {
        return users.keySet().stream()
                .filter(user -> user.getPassport().equals(passport))
-               .findAny()
-               .orElse(null);
+               .findAny();
     }
 
     /**
@@ -50,12 +47,11 @@ public class BankService {
      * @param requisite - реквизиты аккаунта
      * @return - информация об аккаунте
      */
-    public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        return user == null ? null : users.get(user).stream()
+    public Optional<Account> findByRequisite(String passport, String requisite) {
+        Optional<User> user = findByPassport(passport);
+        return user.isEmpty() ? Optional.empty() : users.get(user.get()).stream()
                 .filter(account -> account.equals(new Account(requisite, -1)))
-                .findAny()
-                .orElse(null);
+                .findAny();
     }
 
     /**
@@ -69,12 +65,12 @@ public class BankService {
      */
     public boolean transferMoney(String srcPassport, String srcRequisite, String dstPassport, String dstRequisite, double amount) {
         boolean result = false;
-        Account srcAccount = findByRequisite(srcPassport, srcRequisite);
-        Account dstAccount = findByRequisite(dstPassport, dstRequisite);
+        Optional<Account> srcAccount = findByRequisite(srcPassport, srcRequisite);
+        Optional<Account> dstAccount = findByRequisite(dstPassport, dstRequisite);
 
-        if (srcAccount != null && dstAccount != null && srcAccount.getBalance() >= amount) {
-            srcAccount.setBalance(srcAccount.getBalance() - amount);
-            dstAccount.setBalance(dstAccount.getBalance() + amount);
+        if (srcAccount.isPresent() && dstAccount.isPresent() && srcAccount.get().getBalance() >= amount) {
+            srcAccount.get().setBalance(srcAccount.get().getBalance() - amount);
+            dstAccount.get().setBalance(dstAccount.get().getBalance() + amount);
             result = true;
         }
 
